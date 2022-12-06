@@ -56,20 +56,3 @@ class ParallelRollouts:
                 future.result()
 
         return state
-
-if __name__ == "__main__":
-    model_path = "../../../OptimisationBasedControl/models/cartpole.xml"
-    nstate, nstep, nworkers = 30, 200, 16
-    model = mujoco.MjModel.from_xml_path(model_path)
-    initial_state = np.random.randn(nstate, model.nq + model.nv + model.na)
-    state = np.zeros((nstate, nstep, model.nq + model.nv + model.na))
-    sensordata = np.zeros((nstate, nstep, model.nsensordata))
-    ctrl = np.random.randn(nstate, nstep, model.nu)
-    par_roll = ParallelRollouts(model_path, nworkers)
-    now = time.time()
-    res1 = par_roll(initial_state, state, ctrl, sensordata, use_cache=False).copy()
-    end1 = time.time()
-    res2 = par_roll(initial_state, state, ctrl, sensordata, use_cache=True).copy()
-    end2 = time.time()
-    print(f"Not cached: {end1 - now}s  Cached: {end2 - end1}s")
-    np.testing.assert_array_equal(res1, res2)
