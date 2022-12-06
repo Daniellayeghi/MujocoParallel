@@ -15,7 +15,7 @@ class ParallelRollouts:
         nstate, nstep, _ = state.shape
         rollout.rollout(
             self._m, data, skip_checks=True, nstate=nstate,
-            nstep=nstep,initial_state=init_states, ctrl=ctrl, state=state
+            nstep=nstep, initial_state=init_states, ctrl=ctrl, state=state
         )
 
     def _build_containers(self, init_states, state, ctrl):

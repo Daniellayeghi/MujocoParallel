@@ -70,7 +70,7 @@ class MuJoCoRolloutTest(parameterized.TestCase):
 
     def test_rollout(self):
         model = mujoco.MjModel.from_xml_path(model_path)
-        num_workers, nstate, nstep = 16, 30, 200
+        num_workers, nstate, nstep = 10, 100, 200
         initial_state = np.random.randn(nstate, model.nq + model.nv + model.na)
         state = np.zeros((nstate, nstep, model.nq + model.nv + model.na))
         sensordata = np.zeros((nstate, nstep, model.nsensordata))
