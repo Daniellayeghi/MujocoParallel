@@ -1,5 +1,5 @@
 # Mujoco Parallel Simulation
-This repository restructures **_Deepmind's own implementation_** of parallel rollouts for Mujoco.
+This repository restructures **_Deepmind's own implementation_** (as example bindings) of parallel rollouts for Mujoco.
 It adds the option to cache the trajectory buffers and the thread local MjModels since
 in most cases these don't change.
 
