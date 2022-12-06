@@ -7,9 +7,9 @@ in most cases these don't change.
 
 __Example results__
 ```
-Sequential rollout:      0.879
-Parallel rollout:        0.087
-Cached Parallel Rollout: 0.085
+Sequential rollout:      0.879s
+Parallel rollout:        0.087s
+Cached Parallel Rollout: 0.085s
 ```
 
 __To initialise__
