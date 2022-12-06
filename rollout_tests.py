@@ -4,7 +4,7 @@ import numpy as np
 from absl.testing import parameterized
 from par_rollout import ParallelRollouts
 
-model_path = "cartpole.xml"
+model_path = "humanoid.xml"
 
 
 def get_state(data):
@@ -81,7 +81,7 @@ class MuJoCoRolloutTest(parameterized.TestCase):
         now = time.time()
         res = par_roll(initial_state, state, ctrl, sensordata, use_cache=False)
         end1 = time.time()
-        res_cached = par_roll(initial_state, state, ctrl, sensordata, use_cache=False)
+        res_cached = par_roll(initial_state, state, ctrl, sensordata, use_cache=True)
         end2 = time.time()
         py_state, py_sensordata = multi_rollout(model, data, initial_state, ctrl=ctrl)
         end3 = time.time()
